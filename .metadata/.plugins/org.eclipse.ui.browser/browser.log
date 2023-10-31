@@ -1,0 +1,7 @@
+
+10월 31, 2023 14:17:33.517 NEW SESSION
+10월 31, 2023 14:17:33.517 [12512:20512:1031/141733.515:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
+10월 31, 2023 14:22:26.658 [13072:4328:1031/142226.658:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
+10월 31, 2023 14:22:47.942 [13072:4328:1031/142247.941:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
+10월 31, 2023 14:23:34.446 [13072:4328:1031/142334.446:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
+10월 31, 2023 15:00:40.363 [13072:16024:1031/150040.363:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
