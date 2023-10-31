@@ -4,8 +4,10 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.myweb.www.domain.BoardVO;
 import com.myweb.www.service.boardService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -24,8 +26,20 @@ public class BoardController {
 	//서비스 연결 하기
 	
 	@GetMapping("/register")
-	public String register() {
-		return "/board/register/";
+	public String boardregisterGet() {
+		return "/board/register";
 	}
+	
+		
+	@PostMapping("/register")
+	public String register(BoardVO bvo) {
+		log.info("boardVO >>>> bvo" + bvo);
+		int isOK = bsv.PostRegister(bvo);
+		log.info("boardVO isOK >>> "+(isOK > 0 ? "ok" : "fail"));
+		return "index";
+	}
+	
+	
+	
 
 }
