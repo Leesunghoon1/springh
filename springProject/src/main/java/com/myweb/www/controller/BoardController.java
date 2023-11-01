@@ -1,11 +1,15 @@
 package com.myweb.www.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.myweb.www.domain.BoardVO;
 import com.myweb.www.service.boardService;
@@ -39,6 +43,33 @@ public class BoardController {
 		return "index";
 	}
 	
+	@GetMapping("/list")
+	public String list(Model m) {
+		List<BoardVO> list = bsv.getList();
+		//리스트는 받을 필요가없음 왜냐 ? 전체로 뿌려주기 때문에 getList를 통해서 Mapper에서
+		//select * from한걸 받아서 BoardVO 리스트에 저장
+		//그리고 m을 통해 jsp로 뿌려주기
+		log.info("list = {} " , list);
+		m.addAttribute("list", list);
+		
+		return "/board/list";
+	}
+	
+	@GetMapping("/detail")
+	public void detail(Model m, @RequestParam("bno")long bno) {
+		//m은 뷰로 가기위한 객체 ? 그리고 bno를 받아야 어떤 디테일로 갈지 아니까 받은거
+		BoardVO bvo = bsv.getDetail(bno);
+		log.info("bvo = {}", bvo);
+		m.addAttribute("bvo", bvo);
+	}
+
+	@GetMapping("modify")
+	public void getModify(Model m, @RequestParam("bno")int bno) {
+		log.info("Board modify bno = {}", bno);
+		BoardVO bvo = bsv.getDetail(bno);
+		log.info("bvo = {}", bvo);
+		m.addAttribute("bvo", bvo);
+	}
 	
 	
 

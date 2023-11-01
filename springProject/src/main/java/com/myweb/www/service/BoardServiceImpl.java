@@ -1,5 +1,7 @@
 package com.myweb.www.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -20,5 +22,19 @@ public class BoardServiceImpl implements boardService{
 		// TODO Auto-generated method stub
 		return bdao.PostRegister(bvo);
 	}
+
+	@Override
+	public List<BoardVO> getList() {
+		// TODO Auto-generated method stub
+		return bdao.getList();
+	}
+
+	@Override
+	public BoardVO getDetail(long bno) {
+		// TODO Auto-generated method stub
+		return bdao.getDetail(bno);
+	}
+
+
 	
 }
