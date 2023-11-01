@@ -8,8 +8,13 @@ public interface BoardDAO {
 
 	int PostRegister(BoardVO bvo);
 
-	List<BoardVO> getList();
+	List<BoardVO> GetList();
 
 	BoardVO getDetail(long bno);
+
+	int postModify(BoardVO bvo);
+
+	int remove(int bno);
+
 
 }

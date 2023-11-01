@@ -9,6 +9,11 @@ public interface boardService {
 	int PostRegister(BoardVO bvo);
 
 	List<BoardVO> getList();
+	
+	int postModify(BoardVO bvo);
 
 	BoardVO getDetail(long bno);
+
+	int remove(int bno);
+
 }

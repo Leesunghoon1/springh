@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-      
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,47 +8,39 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="../common/header.jsp"></jsp:include>
+	<jsp:include page="../common/nav.jsp"></jsp:include>
 
-<jsp:include page="../common/header.jsp"/>
-<jsp:include page="../common/nav.jsp"/>
-<h1>디테일 페이지</h1>
-
-<table border="1">
-
-<tr>
-	<th>BNO</th>
-	<td>${bvo.bno }</td>
-</tr>
-<tr>
-	<th>TITLE</th>
-	<td>${bvo.title }</td>
-</tr>
-
-<tr>
-	<th>WRITER</th>
-	<td>${bvo.writer }</td>
-</tr>
-
-<tr>
-	<th>REG_DATE</th>
-	<td>${bvo.regAt }</td>
-</tr>
-<tr>
-	<th>CONTENT</th>
-	<td>${bvo.content }</td>
-</tr>
-<tr>
-	<th>READ_COUNT</th>
-	<td>${bvo.readCount }</td>
-</tr>
-
-</table>
-
-<a href="/board/modify?bno=${bvo.bno }"><button>수정</button></a>
-<a href="/"><button>삭제</button></a>
-<a href="/"><button>리스트</button></a>
+	<table id="table" class="table table-dark table-hover">
+		<tr>
+			<th>#</th>
+			<td>${bvo.bno}</td>
+		</tr>
+		<tr>
+			<th>제목</th>
+			<td>${bvo.title}</td>
+		</tr>
+		<tr>
+			<th>작성자</th>
+			<td>${bvo.writer}</td>
+		</tr>
+		<tr>
+			<th>내용</th>
+			<td>${bvo.content}</td>
+		</tr>
+		<tr>
+			<th>조회수</th>
+			<td>${bvo.readCount}</td>
+		</tr>
+	</table>
+	
+	<div class="button-box">
+		<a href="/board/modify?bno=${bvo.bno}"><button type="button"
+				id="button" class="btn btn-outline-secondary">글수정</button></a>
+	</div>
 
 
-<jsp:include page="../common/footer.jsp"/>
+
+	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>

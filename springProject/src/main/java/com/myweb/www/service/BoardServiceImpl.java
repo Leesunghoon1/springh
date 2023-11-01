@@ -26,7 +26,13 @@ public class BoardServiceImpl implements boardService{
 	@Override
 	public List<BoardVO> getList() {
 		// TODO Auto-generated method stub
-		return bdao.getList();
+		return bdao.GetList();
+	}
+
+	@Override
+	public int postModify(BoardVO bvo) {
+		// TODO Auto-generated method stub
+		return bdao.postModify(bvo);
 	}
 
 	@Override
@@ -34,6 +40,15 @@ public class BoardServiceImpl implements boardService{
 		// TODO Auto-generated method stub
 		return bdao.getDetail(bno);
 	}
+
+	@Override
+	public int remove(int bno) {
+		// TODO Auto-generated method stub
+		return bdao.remove(bno);
+	}
+
+
+
 
 
 	
