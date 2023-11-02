@@ -13,7 +13,6 @@
 h1, p {
 	margin: 20px
 }
-
 </style>
 </head>
 <body>

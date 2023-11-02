@@ -5,12 +5,16 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.myweb.www.domain.BoardVO;
+import com.myweb.www.domain.PagingVO;
 import com.myweb.www.repository.BoardDAO;
 
+import lombok.extern.slf4j.Slf4j;
 
 
+@Slf4j
 @Service
 public class BoardServiceImpl implements boardService{
 	
@@ -23,10 +27,15 @@ public class BoardServiceImpl implements boardService{
 		return bdao.PostRegister(bvo);
 	}
 
+
+	@Transactional
 	@Override
-	public List<BoardVO> getList() {
+	public BoardVO getDetail(long bno) {
 		// TODO Auto-generated method stub
-		return bdao.GetList();
+		
+		int isOK = bdao.readCount(bno);
+		log.info("조회수 >> " + (isOK > 0 ? "UP" : "ERROR"));
+		return bdao.getDetail(bno);
 	}
 
 	@Override
@@ -36,19 +45,22 @@ public class BoardServiceImpl implements boardService{
 	}
 
 	@Override
-	public BoardVO getDetail(long bno) {
-		// TODO Auto-generated method stub
-		return bdao.getDetail(bno);
-	}
-
-	@Override
 	public int remove(int bno) {
 		// TODO Auto-generated method stub
 		return bdao.remove(bno);
 	}
 
+	@Override
+	public int getTotalCount(PagingVO pvo) {
+		// TODO Auto-generated method stub
+		return bdao.getTotalCount(pvo);
+	}
 
-
+	@Override
+	public List<BoardVO> getList(PagingVO pvo) {
+		// TODO Auto-generated method stub
+				return bdao.getList(pvo);
+	}
 
 
 	

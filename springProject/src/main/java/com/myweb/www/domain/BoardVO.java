@@ -12,13 +12,15 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BoardVO {
+	
 	private long bno;
 	private String title;
-	private String content;
 	private String writer;
+	private String content;
 	private String regAt;
 	private String modAt;
 	private int readCount;
+	private int fileCount;
 	private int cmtQty;
 	private int hasFile;
 
