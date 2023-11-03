@@ -1,15 +1,31 @@
 package com.myweb.www.controller;
 
+<<<<<<< HEAD
+import java.security.Principal;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+=======
+import java.util.List;
+
+import javax.inject.Inject;
+>>>>>>> c94f2285d7e7854f13a6790a7d20357dca3690f7
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+<<<<<<< HEAD
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+=======
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+>>>>>>> c94f2285d7e7854f13a6790a7d20357dca3690f7
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,6 +62,35 @@ public class CommentController {
 		
 	}
 	
+<<<<<<< HEAD
+	@GetMapping(value = "{bno}/{page}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<PagingHandler> spreadCommentList(@PathVariable("bno")long bno, @PathVariable("page")int page){
+		
+		log.info("bno >> " + bno + " page >> " + page);
+		PagingVO pgvo = new PagingVO(page, 5);
+		
+		return  new ResponseEntity<PagingHandler>(csv.getList(bno, pgvo), HttpStatus.OK);
+	}
+	@DeleteMapping(value="/{cno}", produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> remove(@PathVariable("cno")int cno) {
+		int isOK = csv.remove(cno);
+		log.info("isOK>>> {}", isOK);
+		return isOK > 0 ? new ResponseEntity<String>("1", HttpStatus.OK)
+				: new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@PutMapping(value="/{cno}", 
+			consumes = "application/json", produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> edit(@RequestBody CommentVO cvo, HttpServletRequest request) {
+		log.info("댓글 수정 cvo {}", cvo);
+		int isOK = csv.edit(cvo);
+		return isOK > 0 ? new ResponseEntity<String>("1", HttpStatus.OK)
+				: new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+		
+}
+	
+=======
 	@GetMapping(value="/{bno}", 
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<CommentVO>> spread(
@@ -60,3 +105,4 @@ public class CommentController {
 	}
 	
 }
+>>>>>>> c94f2285d7e7854f13a6790a7d20357dca3690f7

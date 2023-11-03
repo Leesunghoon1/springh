@@ -19,6 +19,7 @@ public class ServletConfiguration implements WebMvcConfigurer{
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 		//나중에 파일 업로드 경로 추가
+		registry.addResourceHandler("/upload/**").addResourceLocations("C:\\_myweb\\_java\\fileUpload\\"); 
 	
 		
 	}
@@ -34,6 +35,7 @@ public class ServletConfiguration implements WebMvcConfigurer{
 	}
 	
 	//bean으로 multipartResolver 설정
+	//파일설정
 	@Bean(name = "multipartResolver") //메서드의 get네임을 변경가능
 	public MultipartResolver getMultipartResolver() {
 		StandardServletMultipartResolver multipartResolver = new StandardServletMultipartResolver();
